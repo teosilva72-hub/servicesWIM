@@ -1,5 +1,6 @@
 const sql = require('./conn')
 const fs = require('fs');
+const { Console } = require('console');
 const data = new Date().toLocaleDateString();
 Data(data);
 const path = `C:/Cameras/WIM/WIM_01/${Data(data)}`;
@@ -26,14 +27,18 @@ function listFiles(path) {
 }
 const img = [],
     plate = [],
-    equip = [],
+    equip = '',
     date = [];
-async function getFile(files) {
 
-
-
-
-
+function getFile(files) {
+    let ID = '';
+    for (var i = 0; i < files.length; i++) {
+        ID = files[i].split('_');
+        if (ID[0] != 'PlateWIM' && ID != undefined) {
+            ID = `${ID[0]} ${ID[1]}`
+        }
+    }
+    console.log(ID) // tipo do equipamento armazenado na variavel ID
 }
 
 
